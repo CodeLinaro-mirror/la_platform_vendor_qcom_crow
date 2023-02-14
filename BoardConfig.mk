@@ -238,17 +238,17 @@ SOONG_CONFIG_perf_ioctl := true
 #-----------------------------------------------------------------
 # wlan specific
 #-----------------------------------------------------------------
-#ifeq ($(strip $(BOARD_HAS_QCOM_WLAN)),true)
-#ifeq ($(TARGET_USES_QMAA), true)
-#ifneq ($(TARGET_USES_QMAA_OVERRIDE_WLAN), true)
-#include device/qcom/wlan/default/BoardConfigWlan.mk
-#else
-#include device/qcom/wlan/crow/BoardConfigWlan.mk
-#endif
-#else
-#include device/qcom/wlan/crow/BoardConfigWlan.mk
-#endif
-#endif
+ifeq ($(strip $(BOARD_HAS_QCOM_WLAN)),true)
+ifeq ($(TARGET_USES_QMAA), true)
+ifneq ($(TARGET_USES_QMAA_OVERRIDE_WLAN), true)
+include device/qcom/wlan/default/BoardConfigWlan.mk
+else
+include device/qcom/wlan/crow/BoardConfigWlan.mk
+endif
+else
+include device/qcom/wlan/crow/BoardConfigWlan.mk
+endif
+endif
 
 #################################################################################
 # This is the End of BoardConfig.mk file.

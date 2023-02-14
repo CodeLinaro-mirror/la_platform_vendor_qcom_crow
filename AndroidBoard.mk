@@ -104,6 +104,6 @@ include vendor/qcom/opensource/core-utils/build/AndroidBoardCommon.mk
 #----------------------------------------------------------------------
 # wlan specific
 #----------------------------------------------------------------------
-#ifeq ($(strip $(BOARD_HAS_QCOM_WLAN)),true)
-#include device/qcom/wlan/crow/AndroidBoardWlan.mk
-#endif
+ifeq ($(strip $(BOARD_HAS_QCOM_WLAN)),true)
+include device/qcom/wlan/crow/AndroidBoardWlan.mk
+endif

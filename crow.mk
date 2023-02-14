@@ -102,7 +102,7 @@ TARGET_USES_QMAA_OVERRIDE_WFD     := true
 TARGET_USES_QMAA_OVERRIDE_GPS     := true
 TARGET_USES_QMAA_OVERRIDE_ANDROID_RECOVERY := true
 TARGET_USES_QMAA_OVERRIDE_ANDROID_CORE := true
-#TARGET_USES_QMAA_OVERRIDE_WLAN    := true
+TARGET_USES_QMAA_OVERRIDE_WLAN    := true
 TARGET_USES_QMAA_OVERRIDE_BLUETOOTH   := false
 TARGET_USES_QMAA_OVERRIDE_FM  := true
 TARGET_USES_QMAA_OVERRIDE_CVP  := true
@@ -183,7 +183,7 @@ TARGET_KERNEL_DLKM_SECURE_MSM_OVERRIDE := true
 TARGET_KERNEL_DLKM_THERMAL_OVERRIDE := true
 TARGET_KERNEL_DLKM_TOUCH_OVERRIDE := true
 TARGET_KERNEL_DLKM_VIDEO_OVERRIDE := true
-#TARGET_KERNEL_DLKM_WLAN_OVERRIDE := true
+TARGET_KERNEL_DLKM_WLAN_OVERRIDE := true
 TARGET_KERNEL_DLKM_MMRM_OVERRIDE := true
 
 #####Dynamic partition Handling
@@ -254,15 +254,15 @@ PRODUCT_MODEL := crow for arm64
 #----------------------------------------------------------------------
 # wlan specific
 #----------------------------------------------------------------------
-#ifeq ($(TARGET_USES_QMAA), true)
-#ifneq ($(TARGET_USES_QMAA_OVERRIDE_WLAN), true)
-#include device/qcom/wlan/default/wlan.mk
-#else
-#include device/qcom/wlan/crow/wlan.mk
-#endif
-#else
-#include device/qcom/wlan/crow/wlan.mk
-#endif
+ifeq ($(TARGET_USES_QMAA), true)
+ifneq ($(TARGET_USES_QMAA_OVERRIDE_WLAN), true)
+include device/qcom/wlan/default/wlan.mk
+else
+include device/qcom/wlan/crow/wlan.mk
+endif
+else
+include device/qcom/wlan/crow/wlan.mk
+endif
 
 #----------------------------------------------------------------------
 # perf specific
