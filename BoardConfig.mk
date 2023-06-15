@@ -37,7 +37,7 @@ BOARD_RAMDISK_USE_LZ4 := true
 
 -include $(QCPATH)/common/crow/BoardConfigVendor.mk
 
-SECTOOLS_SECURITY_PROFILE := $(QCPATH)/securemsm/security_profiles/crow_security_profile.xml
+SECTOOLS_SECURITY_PROFILE := $(QCPATH)/securemsm/security_profiles/crow_tz_security_profile.xml
 
 USE_OPENGL_RENDERER := true
 
@@ -111,6 +111,12 @@ BOARD_VENDOR_DLKMIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_USES_SYSTEM_DLKMIMAGE := true
 TARGET_COPY_OUT_SYSTEM_DLKM := system_dlkm
 BOARD_SYSTEM_DLKMIMAGE_FILE_SYSTEM_TYPE := ext4
+
+# Enable chained vbmeta for boot images
+BOARD_AVB_BOOT_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
+BOARD_AVB_BOOT_ALGORITHM := SHA256_RSA4096
+BOARD_AVB_BOOT_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
+BOARD_AVB_BOOT_ROLLBACK_INDEX_LOCATION := 3
 
 #Enable Metadata compilation and adding metadata related attributes
 BOARD_USES_METADATA_PARTITION := true
